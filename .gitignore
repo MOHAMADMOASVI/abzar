@@ -1,0 +1,11 @@
+.DS_Store
+
+# Local settings and secrets (created by setup.php / ai-settings.php)
+config/*.php
+config/rl/
+
+# Deploy archives
+*.zip
+
+# Commercial font, not redistributable
+assets/fonts/IRANYekan.woff

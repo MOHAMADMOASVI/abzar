@@ -1,0 +1,36 @@
+# sitemap.xml → اسکریپت داینامیک
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^sitemap\.xml$ sitemap_xml.php [L]
+</IfModule>
+
+# کش طولانی برای فایل‌های استاتیک (فونت/کتابخانه/لوگو)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 365 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType text/css "access plus 7 days"
+</IfModule>
+
+# سقف‌های آپلود برای ابزار — فقط وقتی PHP به‌صورت ماژول Apache اجرا می‌شود اعمال می‌گردد
+# (داخل IfModule گذاشته شده تا در حالت CGI باعث خطای 500 نشود)
+<IfModule mod_php.c>
+  php_value upload_max_filesize 1024M
+  php_value post_max_size 1100M
+  php_value memory_limit 1536M
+  php_value max_execution_time 900
+</IfModule>
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 1024M
+  php_value post_max_size 1100M
+  php_value memory_limit 1536M
+  php_value max_execution_time 900
+</IfModule>
+<IfModule mod_php8.c>
+  php_value upload_max_filesize 1024M
+  php_value post_max_size 1100M
+  php_value memory_limit 1536M
+  php_value max_execution_time 900
+</IfModule>
